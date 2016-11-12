@@ -15,7 +15,7 @@ export default class eventDetailctrl{
     this.scope.starflag=false;
     this.scope.single_event=[];
     this.services=detailfact;
-    this.scope.fab="../Web/ic_floating_button.png";
+    this.scope.fab="Web/ic_floating_button.png";
     console.log(this.sp);
     // this.services.getDetails().success((res)=>{
     //   console.log("hiiiiiiiiiiiiiiiiiiiiiii" ,res);
@@ -38,10 +38,10 @@ star(){
   }
   setflag(){
     if(this.scope.show){
-      this.scope.fab="../Web/ic_floating_button.png";
+      this.scope.fab="Web/ic_floating_button.png";
     }
     else{
-      this.scope.fab="../Web/ic_floating_button_closed.png";
+      this.scope.fab="Web/ic_floating_button_closed.png";
     }
     this.scope.show=!this.scope.show;
   }
