@@ -18,11 +18,61 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="libs/bootstrap.min.js"></script>
 	<script src="libs/materialize.min.js"></script>
-	<script type="text/javascript" id="linkedInTag" src="//platform.linkedin.com/in.js">
-		api_key:8165atpxfwoucv
-		onload:myOnloadFunction
-		authorize: true
-	</script>
+	<script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key: 8165atpxfwoucv
+    authorize: true
+    onLoad: onLinkedInLoad
+</script>
+
+<script type="text/javascript">
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", getProfileData);
+    }
+
+    // Handle the successful return from the API call
+    function onSuccess(data) {
+        console.log("hahahahahahahahahahahahaha",data);
+				if(localStorage.getItem('msflag')==3){
+					window.location.href='#/mc';
+				}
+				console.log("businesscardjnsbdkjsnk",localStorage.getItem('bcflag'));
+				if(localStorage.getItem('bcflag')==2){
+					console.log("businesscard");
+					window.location.href='#/businesscard';
+				}
+				if(localStorage.getItem('atflag')==1){
+					var id=localStorage.getItem('eventId');
+					window.location.href='#/details/'+id;
+				}
+				var $body = angular.element(document.body);
+				 var $rootScope = $body.scope().$root;
+				 $rootScope.$apply(function () {
+						 $rootScope.profileData =data;
+						 console.log("RootScope",$rootScope.login);
+				 });
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log(error);
+    }
+
+    // Use the API call wrapper to request the member's basic profile data
+    function getProfileData() {
+				// localStorage.setItem("login" , true);
+				// console.log(localStorage.getItem("login"));
+				var $body = angular.element(document.body);
+				 var $rootScope = $body.scope().$root;
+				 $rootScope.$apply(function () {
+						 $rootScope.login =true;
+						 console.log("RootScope",$rootScope.login);
+				 });
+
+				IN.API.Profile("me").fields("first-name", "last-name", "email-address","picture-url","id","industry","positions")
+			 	.result(onSuccess).error(onError);
+    }
+
+</script>
 </head>
 <!-- 81yqmo6bno0bcc -->
 <body>
@@ -44,6 +94,8 @@
 
 				</div>
       </div>
+			<div id="dummy" onmousedown="console.log('onmousedown')">
+			</div>
 			<div class="row remove-margin">
 				<div class="footer" ng-show=flag>
 				<d2></d2>
@@ -56,9 +108,10 @@
 <script src="libs/angular-slick.min.js"></script>
 <script src="libs/angular-route.min.js"></script>
 <script src="libs/ngStorage.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script> -->
 <script src="libs/ui-bootstrap-tpls.js"></script>
-
+<script src="libs/moment.js"></script>
+<script src="libs/angular-moment.js"></script>
 <script src="app.min.js"></script>
 </body>
 </html>

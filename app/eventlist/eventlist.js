@@ -1,6 +1,5 @@
 import eventlistctrl from './eventlistctrl';
 
-
 function Config($stateProvider, $urlRouterProvider) {
     'ngInject';
     $stateProvider.state({
@@ -11,8 +10,7 @@ function Config($stateProvider, $urlRouterProvider) {
         controllerAs:'elc'
     });
 }
-
 angular.module('myApp.eventlist', ['ui.router','ngStorage','slickCarousel'])
     .config(Config)
 
-.controller('eventlistctrl' , eventlistctrl);
+.controller('eventlistctrl' , eventlistctrl)

@@ -1,76 +1,129 @@
-<div class="container remove-margin">
-<div class="top_container">
-<d4>
-    <h2 style="margin-top:5px;margin-bottom: 3px;">Events</h2>
-</d4>
-<div style="margin-left:600px">
+<div class="container remove-margin" class="ng-cloak">
+    <div class="top_container">
+        <div class="search_event">
+            <d4>
+                <h3>All Events</h3>
+            </d4>
+            <span style="margin-left:38%;" ng-init="i=0">
+                <input type="text" class="search-button" ng-model="search" name="search" placeholder="Search.." ng-class="{'myClass': !showbox}">
+                <img src="Web/ic_search.png" ng-click="elc.search_event()" style="cursor:pointer"/>
+                <a class="btn-floating white" data-toggle="modal" data-target="#calendar" href="">
+                    <img src="Web/ic_calendar.png"/></a>
+                    <d4></d4>
+            </span>
 
-    <input type="text" class="search-button" ng-model="search" name="search" placeholder="Search..">
-    <a class="btn-floating white" data-toggle="modal" data-target="#calendar" href=""><button type="button" class="btn btn-primary">Calendar</button></a>
-</div>
-</div>
-<div class="test">
-  <div ng-if="details.length">
-    <uib-tabset active="currentTab">
-       <slick class="slider" settings="slickConfig2">
-          <uib-tab  ng-repeat="obj in details" href="#list" select=elc.getevents(obj) data-toggle="tab">
-            <uib-tab-heading><div class="test1"><b> {{obj}}</b></div></uib-tab-heading>
-              <div class="content_container contentclass">
-                <div class="tab-pane fade in active" id="list">
-                <div ng-repeat="item in Array | filter:search" ng-if="!errormsg.length">
-                  <div class="col-md-1">
-                    <h5>{{item[0].startTime}}</h5>
-                  </div>
-                   <div class="col-md-11 detailh">
-                     <div class="card">
-                        <div class="container_card">
-                            <slick class="slider1" settings="listConfig">
-                              <div ng-repeat="obj in item" ng-click="elc.detailfun(obj.id)">
-                                        <h5>{{obj.name}}</h5>
-                                        <hr style="border-top: 3px solid #eee;"/>
-                                        <p style="float:left;color:grey;"><img src="Web/ic_map.png" style="float:left;" /><span>Techjini</span></p>
-                                        <p style="float:right;color:grey;"><img src="Web/ic_clock.png" style="float:left;" /><span>End: {{obj.endTime}}</span></p>
-                              </div>
-                         </slick>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                 <!-- <div ng-if="errormsg.length">
-                  <h4> {{errormsg}}</h4>
-              </div> -->
-                <div ng-show="(Array | filter:search).length==0 || errormsg.length">
-                   <h4>No events found</h4>
-               </div>
-              </div>
+        </div>
+    </div>
+    <div class="col-md-12 test">
+
+      <div  ng-if="!search">
+        <div ng-if="final.length" >
+            <uib-tabset active="currentTab">
+                <slick class="slider" settings="slickConfig2">
+                  <uib-tab ng-repeat="obj in final track by $index" href="#list" select=elc.getevents(obj.date) data-toggle="tab" ng-init="i=-1;">
+                        <uib-tab-heading>
+                            <div class="test1">{{obj.day}}<br/>
+                                {{obj.printDate}}</div>
+                        </uib-tab-heading>
+                        <br />
+                        <p class="col-md-12" greyColor>
+                            <span style="color:#A9A9A9">{{obj.month}}</span>
+                        </p><br />
+                        <div class="content_container contentclass">
+                            <div class="tab-pane fade in active" id="list">
+                                <div ng-repeat="item in Array" ng-if="!search&&!errormsg.length">
+                                    <div class="col-md-1" >
+                                        <h4 ng-if="item[0].startTime">{{item[0].startTime}}<br /><span class="greyColor">{{item[0].period}}</span></h4>
+                                    </div>
+                                    <div ng-if="!load">
+
+                                    <div class="col-md-11 detailh">
+                                        <div class="container_card " style="padding-bottom:10px">
+                                            <slick ng-if="item" settings="listConfig">
+                                                <div ng-repeat="obj in item" ng-click="elc.detailfun(obj.id)">
+                                                    <h5 >{{obj.name}}</h5>
+                                                    <hr style="border-top: 3px solid #eee;"/>
+                                                    <p style="float:left;color:grey;" ng-if="obj.room"><img src="Web/ic_map.png" style="float:left;"/>
+                                                        <span>at {{obj.room}}</span>
+                                                    </p>
+                                                    <p style="float:right;color:grey;" ng-if="obj.endTime"><img src="Web/ic_clock.png" style="float:left;"/>
+                                                        <span>End:
+                                                            {{obj.endTime}}</span>
+                                                    </p>
+                                                </div>
+
+                                            </slick>
+                                        </div>
+
+                                    </div><br/>
+
+                                </div>
+                            </div>
+                      </div>
+                      <div ng-show="errormsg.length">
+
+                          <h4 style="margin-left:40%;">No events found</h4>
+                      </div>
+                    </div>
+
+                    </uib-tab>
+                </slick>
+            </uib-tabset>
+        </div>
+      </div>
+      <div ng-show="(filteredArray | filter:search).length==0 ">
+          <h4 style="margin-left:40%;margin-top:200px;"><b>No events found</b></h4>
+      </div>
+
+        <div ng-if="search">
+
+            <div ng-repeat="item in filteredArray | filter:search" ><br />
+              {{item.Eventdate }} {{item.Eventmonth }} {{item.Eventyear }}<br /><br/>
+                <div class="col-md-1">
+                    <h5>{{item.startTime}}</h5>
+                </div>
+                <div class="col-md-11">
+                  <!-- {{filteredArray | filter:search}} -->
+                    <div class="container_card1">
+                        <div ng-click="elc.detailfun(item.id)">
+                            <h5>{{item.name}}</h5>
+                            <hr style="border-top: 3px solid #eee;"/>
+                            <p style="float:left;color:grey;"><img src="Web/ic_map.png" style="float:left;"/>
+                                <span>at {{item.room}}</span>
+                            </p>
+                            <p style="float:right;color:grey;"><img src="Web/ic_clock.png" style="float:left;"/>
+                                <span>End:
+                                    {{item.endTime}}</span>
+                            </p>
+                        </div>
+                    </div><br />
+                </div><br /><br/>
             </div>
-          </uib-tab>
-        </slick>
-     </uib-tabset>
+        </div>
     </div>
     <div class="modal fade" id="calendar" role="dialog">
-      <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-sm">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Calendar</h4>
-          </div>
-          <div class="modal-body">
-            <div style="display:inline-block; min-height:290px;">
-                <div uib-datepicker id="cal" ng-model="dt"  class="well well-sm"  datepicker-options="options"></div>
+            <!-- Modal content-->
+            <div class="modal-content calendar-class">
+                <div class="modal-header">
+                  <img src="Web/ic_popup_close.png" class="close" data-dismiss="modal" />
+                    <h4 class="modal-title">Calendar</h4>
+                </div>
+                <div class="modal-body" style="height:260px;">
+                    <div style="display:inline-block; min-height:290px;">
+                        <div uib-datepicker id="cal" ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" ng-click="elc.calEvent(dt)" id="ok" class="btn btn-success col-md-2 col-md-push-3 col-md-pull-7" data-dismiss="modal">Ok</button>
+                    <button type="submit" class="btn btn-default col-md-3 col-md-push-3 col-md-pull-6" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" ng-click="elc.calEvent(dt)" id="ok" class="btn btn-success btn-block" data-dismiss="modal">Ok</button>
-             <button type="submit" class="btn btn-danger btn-block" data-dismiss="modal">
-               <span class="glyphicon glyphicon-remove"></span> Cancel
-             </button>
-           </div>
-        </div>
 
-      </div>
+        </div>
     </div>
-  </div>
+</div>
 </div>

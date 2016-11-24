@@ -12,9 +12,9 @@ export default class speakerDetailctrl{
     this.scope.starflag=false;
     this.scope.single_event=[];
     this.services=detailfact;
-    this.services.getEventDetail(this.ls.eventId).success((res)=>{
-      this.scope.speaker=res.speaker;
-      console.log(res.speaker);
+    this.services.getSpeakerDetail(this.ls.eventId).success((res)=>{
+      this.scope.speaker=res;
+      console.log(res,this.ls.eventId,"speakerrrrrrrrrrrrr");
   })
 }
 

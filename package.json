@@ -4,7 +4,7 @@
   "description": "hi",
   "main": "index.js",
   "scripts": {
-    "test": "start"
+    "start": "gulp build && gulp logs && gulp serve"
   },
   "author": "karthik",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "angular-aria": "^1.5.8",
     "angular-material": "^1.1.1",
     "angular-messages": "^1.5.8",
+    "angular-moment": "^1.0.0",
     "angular-route": "^1.5.8",
     "angular-sanitize": "^1.5.8",
     "angular-slick-carousel": "^3.1.7",
@@ -24,6 +25,7 @@
     "http-server": "^0.9.0",
     "jquery": "^3.1.1",
     "materialize-css": "^0.97.8",
+    "moment": "^2.16.0",
     "ngstorage": "^0.3.11",
     "slick-carousel": "^1.6.0"
   },
@@ -37,6 +39,7 @@
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-ng-annotate": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^1.2.0",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.0.1",

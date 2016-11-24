@@ -3,6 +3,6 @@ export default class dir1{
   constructor(){
     this.restrict="EA";
     this.transclude=true;
-    this.template='<img src="https://company.naukri.com/techjini-jobs/images/b1.jpg" height=100% width=100%></img>';
+    this.template='<img src="Web/ic_banner_360.png" height="137px" width=100%></img>';
   }
 }

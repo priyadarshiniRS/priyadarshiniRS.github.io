@@ -1,7 +1,8 @@
 export default class footerCtrl {
   /*@ngInject;*/
-  constructor(detailfact,$scope) {
+  constructor(detailfact,$scope,$window, $timeout, $interval) {
     this.services=detailfact;
+    this.window=$window;
     console.log(this.services);
     $scope.footerConfig = {
          dots: false,
@@ -12,8 +13,38 @@ export default class footerCtrl {
          autoplay: true,
          autoplaySpeed: 0,
          speed: 2000,
-         cssEase: 'linear'
+         cssEase: 'linear',
+         method:{}
       };
+
+        $scope.footerConfig.event= {
+           beforeChange: function (event, slick, currentSlide, nextSlide) {
+          //   console.log('before change');
+           },
+           afterChange: function (event, slick, currentSlide, nextSlide) {
+            console.log('before afterChange');
+            // $scope.footerConfig.method.slickPlay();
+            // $('.footerSlide')[0].slick.refresh();
+            $scope.footerConfig = {
+                 dots: false,
+                 arrows: false,
+                 centerMode: true,
+                 slidesToShow: 6,
+                 centerPadding: '280px',
+                 autoplay: true,
+                 autoplaySpeed: 0,
+                 speed: 2000,
+                 cssEase: 'linear',
+                 focusOnselect:false,
+                 method:{}
+              };
+           }
+
+
+
+      }
+
+
     this.services.getData().success((res)=>{
       console.log(res , "Footer");
       $scope.sponser=res;

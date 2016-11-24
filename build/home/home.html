@@ -1,7 +1,11 @@
 <div class="line">
-  <ng-transclude></ng-transclude>
+<ng-transclude>
+  <a href="" class="logouticon">
+    <img src="Web/ic_logout.png" ng-click='hc.logout()' ng-show="login" />
+  </a>
+</ng-transclude>
   <div ng-hide="true">
     <script type="in/Login"></script>
   </div>
-  <!-- <button ng-click='hc.logout()' ng-if="login">Logout</button> -->
+
 </div>

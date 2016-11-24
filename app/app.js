@@ -4,13 +4,15 @@ import dir1 from './directives/dir1';
 import dir2 from './directives/dir2';
 import dir3 from './directives/dir3';
 import topdir from './directives/topdir';
+import menuCtrl from './home/menuCtrl.js';
 import './splash/splash.js';
 import './home/home.js';
 import './eventlist/eventlist.js';
 import './eventDetail/eventDetail.js';
 import './speakerDetail/speakerDetail.js';
 import './myschedule/mc.js';
-import menuCtrl from './home/menuCtrl.js';
+import './attendeelist/attendeelist.js';
+import './businesscard/businesscard.js';
 angular.module('myApp',
 ['ui.router',
 'ngStorage',
@@ -20,9 +22,11 @@ angular.module('myApp',
 'myApp.eventDetail',
 'myApp.speakerDetail',
 'ui.bootstrap',
-'ngAnimate',
 'myApp.mc',
-'slickCarousel'
+'myApp.attendeelist',
+'myApp.businesscard',
+'slickCarousel',
+'angularMoment'
 ])
 
   .config(function($urlRouterProvider){

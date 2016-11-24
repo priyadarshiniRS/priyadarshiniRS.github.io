@@ -3,6 +3,7 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var vinylSourceStream = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
+var stripDebug = require('gulp-strip-debug');
 
 // Load all gulp plugins into the plugins object.
 var plugins = require('gulp-load-plugins')();
@@ -10,7 +11,7 @@ var plugins = require('gulp-load-plugins')();
 var src = {
 html: 'app/**/*.html',
 images:'app/**/*.png',
-libs: ['./node_modules/angular-ui-router/release/angular-ui-router.min.js','./node_modules/bootstrap-star-rating/js/star-rating.js','./node_modules/bootstrap-star-rating/css/star-rating.css','./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js','./node_modules/bootstrap-star-rating/js/star-rating.js','./node_modules/materialize-css/dist/css/materialize.min.css','./node_modules/materialize-css/dist/js/materialize.min.js','./node_modules/slick-carousel/slick/slick-theme.css','./node_modules/slick-carousel/slick/slick.css','./node_modules/angular-slick-carousel/dist/angular-slick.min.js','./node_modules/slick-carousel/slick/slick.js','./node_modules/jquery/dist/jquery.min.js','./node_modules/angular/angular.min.js','./node_modules/angular-route/angular-route.min.js','./node_modules/ngstorage/ngStorage.min.js','./node_modules/bootstrap/dist/js/bootstrap.min.js','./node_modules/bootstrap/dist/css/bootstrap.min.css'],
+libs: ['./node_modules/angular-moment/angular-moment.js','./node_modules/moment/moment.js','./node_modules/angular-ui-router/release/angular-ui-router.min.js','./node_modules/bootstrap-star-rating/js/star-rating.js','./node_modules/bootstrap-star-rating/css/star-rating.css','./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js','./node_modules/bootstrap-star-rating/js/star-rating.js','./node_modules/materialize-css/dist/css/materialize.min.css','./node_modules/materialize-css/dist/js/materialize.min.js','./node_modules/slick-carousel/slick/slick-theme.css','./node_modules/slick-carousel/slick/slick.css','./node_modules/angular-slick-carousel/dist/angular-slick.min.js','./node_modules/slick-carousel/slick/slick.js','./node_modules/jquery/dist/jquery.min.js','./node_modules/angular/angular.min.js','./node_modules/angular-route/angular-route.min.js','./node_modules/ngstorage/ngStorage.min.js','./node_modules/bootstrap/dist/js/bootstrap.min.js','./node_modules/bootstrap/dist/css/bootstrap.min.css'],
 css: 'app/**/*.css',
 scripts: {
 all: 'app/**/*.js',
@@ -40,13 +41,6 @@ return gulp.src(src.html)
 
 gulp.task('css', function() {
 return gulp.src(src.css)
-.pipe(gulp.dest(build))
-.pipe(plugins.connect.reload());
-});
-
-
-gulp.task('images', function() {
-return gulp.src(src.images)
 .pipe(gulp.dest(build))
 .pipe(plugins.connect.reload());
 });
@@ -94,11 +88,21 @@ gulp.task('serve',['build','watch'], function() {
 plugins.connect.server({
 root: build,
 port: 9000,
-livereload: false,
+livereload: true,
 fallback: build + 'index.html'
 });
 });
 
+function handleError (err) {
+  console.log(err.toString())
+  process.exit(-1)
+}
+gulp.task('logs',function(){
+  return gulp.src(build+out.scripts.file)
+        .pipe(stripDebug())
+         .on('error', handleError)
+        .pipe(gulp.dest(build));
+})
 gulp.task('watch', function() {
 gulp.watch(src.libs, ['libs']);
 gulp.watch(src.html, ['html']);
