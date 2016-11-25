@@ -8,14 +8,48 @@
 width: 25%;
 border-right: 1px solid lightgrey;
 min-height: 100%;
-background-color: white;
+}
+
+.open{
+	border-radius: 49%;
+	height:90px;
+	width:90px;
+	overflow: hidden;
+	margin-left: 25px;
+	margin-top: -25px;
 }
 
 .col-md-9.remove-margin.right {
     margin-left: 25%;
 		width:75%;
 }
+/*.btn.btn-default.nohover:hover {
+    background-color: none !important;
+}*/
+/*.btn-default.nohover:hover{
+    color: #333;
+    background-color: none !important;
+    border-color: #adadad;
+}*/
+.nohover{
+	width: 109px;
+	height: 34px;
+	background-color: grey;
+	color:white;
+	border-radius: 5px;
+}
+.nohover1{
+	width: 90px;
+	height: 34px;
+	background-color: grey;
+	color:white;
+	border-radius: 5px;
+}
 
+.greyColor.star::after{
+	content: '*';
+	color: red;
+}
 .fab{
 	margin-left: 730px;
 	position: fixed !important;
@@ -37,6 +71,10 @@ background-color: white;
 	border: none !important;
 	padding-left: 1px !important;
 
+}
+
+.btn.starbuttoncolor.rate{
+	filter:grayscale(100%);
 }
 .dropdown-menu {
     position: absolute;
@@ -98,15 +136,15 @@ body {
 	padding-top: 5px;
 }
 img.desaturate {
-	/*filter: grayscale(100%);*/
-	filter:grayscale(100%);
+	filter: grayscale(100%);
 	-webkit-filter:grayscale(100%);
+	/*filter: opacity(10%);*/
 	opacity:0.4;
 	margin-top: 8px;
 }
 img.desaturate:hover{
-	-webkit-filter:grayscale(0);
-	filter:grayscale(0);
+	filter:grayscale(0%);
+	-webkit-filter:grayscale(0%);
 	opacity:1;
 }
 .imagediv{
@@ -147,11 +185,11 @@ img.desaturate:hover{
 
 		.top_container {
 			position: fixed;
-		  z-index: 100;
 		  top: 0;
 		  width: 100%;
 			background-color: #E75757;
 			height: 80px;
+			z-index: 1000000;
 		}
 
 
@@ -172,7 +210,7 @@ img.desaturate:hover{
 	margin-right: 30px !important;
 	background-color: white;
 	padding: 10px;
-	box-shadow: 0 0 5px;
+	box-shadow: 0px 2px 5px grey;
 
 }
 
@@ -210,10 +248,13 @@ img.desaturate:hover{
 	margin-left:0px;
 }
 
-.uib-tab.active {
+.uib-tab.active a{
 				color:white !important;
-       	background-color: #E75757;
     }
+.uib-tab.active {
+		background-color: #E75757;
+	}
+
 uib-tab-heading{
 	text-align: center;
 }
@@ -227,20 +268,25 @@ uib-tab-heading{
 }
 .container_card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	padding: 8px 51px 22px 0px !important;
-	margin-top: 0px;
-	margin-bottom: 8px;
-	width: 773px;
-	    height: 120px !important;
-	padding-left: 45px !important;
+margin-top: 0px;
+margin-bottom: 8px;
+width: 826px;
+padding-right: 52px;
+height: 120px !important;
+padding-left: 45px !important;
+padding-top: 11px;
+background-color: white;
 }
 .container_card1 {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	padding: 6px 51px 34px 0px !important;
-	margin-top: 0px;
-	margin-bottom: 8px;
-	width: 773px;
-	padding-left: 45px !important;
+margin-top: 0px;
+margin-bottom: 8px;
+width: 826px;
+padding-right: 52px;
+height: 120px !important;
+padding-left: 45px !important;
+padding-top: 11px;
+background-color: white;
 }
 
 .card_menu_wrap {
@@ -294,6 +340,7 @@ border-top: 3px solid #eee !important;
 }
 .test1{
 	padding:10px;
+
 }
 
 
@@ -319,25 +366,26 @@ border-top: 3px solid #eee !important;
 .slider{
 	background-color: #ffffff;
 	position: fixed !important;
-  width:73%;
+  width:75%;
 }
 .slider a {
 color: black !important;
 text-decoration: none !important;
 }
-.slider a:hover {
-color: black !important;
-text-decoration: none;
+.col-md-11 a{
+	color:black ;
+	text-decoration:none;
 }
-.slider a:active {
-color: black !important;
-text-decoration: none !important;
+.col-md-11 a:hover{
+	color:black;
+	text-decoration:none;
 }
  h3{
-	margin-top:15px;
+	margin-top:25px;
 	margin-bottom: 3px;
 	margin-left:0px;
 	color:white;
+	padding-top: 7px;
 }
 .modal-content {
 	margin-top: 150px;
@@ -395,7 +443,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 	padding-top: 120px;
 	margin-left: 0px;
 	margin-right: 0px;
-	background-color: #F6F4F4;
+
 }
 
 hr.speaker {
@@ -423,8 +471,9 @@ p {
 
 img.speaker{
 	border-style: solid;
-border-color: red;
+border-color: #E75757;
 border-width: 2px;
+    margin-left: 29px;
 }
 
 .myClass {
@@ -493,7 +542,7 @@ input:focus{
 	margin-left: 20px;
   z-index:0;
 	border-style: solid;
-	border-color: red;
+	border-color: #E75757;
 	border-width: 2px;
 }
 .edit {
@@ -543,4 +592,11 @@ margin-left: -15px;
 padding-top: 1px;
 padding-left: 25px;
 height: 50px;
+}
+
+a:focus {
+    outline: none !important;
+}
+.SlickClass{
+	padding:0px;
 }

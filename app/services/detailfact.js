@@ -25,7 +25,7 @@ checkuser(){
    console.log("inside getData");
    return this.http({
      method : 'get',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/sponsor',
+     url : 'http://35.154.47.65/sponsor',
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
      })
  }
@@ -33,7 +33,7 @@ checkuser(){
    console.log("Details");
  return this.http({
    method : 'get',
-   url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event',
+   url : 'http://35.154.47.65/event',
    headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
    })
  }
@@ -42,7 +42,7 @@ checkuser(){
    console.log("Details");
  return this.http({
    method : 'post',
-   url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event',
+   url : 'http://35.154.47.65/event',
    headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5','Content-Type':'application/x-www-form-urlencoded'},
    transformRequest: function(obj) {
       var str = [];
@@ -57,28 +57,28 @@ checkuser(){
  getDateDetail(date){
    return this.http({
      method : 'get',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event?date='+date,
+     url : 'http://35.154.47.65/event?date='+date,
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
      })
  }
  getEventDetail(id){
    return this.http({
      method : 'get',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event?id='+id,
+     url : 'http://35.154.47.65/event?id='+id,
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
      })
  }
  deleteevent(id,aid){
    return this.http({
      method : 'post',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event?id='+id+'&attendeeId='+aid+'&remove=1',
+     url : 'http://35.154.47.65/event?id='+id+'&attendeeId='+aid+'&remove=1',
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
      })
  }
  getRateDetail(id,aid){
    return this.http({
      method : 'post',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event?id='+id+'&attendeeId='+aid,
+     url : 'http://35.154.47.65/event?id='+id+'&attendeeId='+aid,
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
      })
  }
@@ -86,7 +86,7 @@ checkuser(){
    console.log(obj[0]);
    return this.http({
      method : 'post',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/register',
+     url : 'http://35.154.47.65/register',
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5','Content-Type':'application/x-www-form-urlencoded'},
      transformRequest: function(obj) {
         var str = [];
@@ -106,35 +106,35 @@ checkuser(){
  getattendeelist(){
    return this.http({
      method : 'get',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/attendee',
+     url : 'http://35.154.47.65/attendee',
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
      })
  }
  getmyschedule(id,date){
    return this.http({
      method : 'get',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/schedule?id=' + id + '&date=' + date,
+     url : 'http://35.154.47.65/schedule?id=' + id + '&date=' + date,
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
    })
 }
 myschedule(id){
   return this.http({
     method : 'get',
-    url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/schedule?id=' + id,
+    url : 'http://35.154.47.65/schedule?id=' + id,
     headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
   })
 }
 eventschedule(id){
   return this.http({
     method : 'get',
-    url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/schedule?id=' + id,
+    url : 'http://35.154.47.65/schedule?id=' + id,
     headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
   })
 }
  getSpeakerDetail(id){
    return this.http({
      method : 'get',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/speaker?id='+id,
+     url : 'http://35.154.47.65/speaker?id='+id,
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5'}
    })
 }
@@ -142,7 +142,7 @@ eventschedule(id){
    console.log("eventId",eventId);
    return this.http({
      method : 'post',
-     url : 'http://192.168.120.180/conference_app_2016_php_backend/web/app.php/event',
+     url : 'http://35.154.47.65/event',
      headers:{'apisecret': 'df89c67afe0ec6d78ccfdba740ee2db5','Content-Type':'application/x-www-form-urlencoded'},
      transformRequest: function(obj) {
         var str = [];

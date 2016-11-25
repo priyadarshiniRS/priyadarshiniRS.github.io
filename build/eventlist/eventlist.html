@@ -8,23 +8,24 @@
                 <input type="text" class="search-button" ng-model="search" name="search" placeholder="Search.." ng-class="{'myClass': !showbox}">
                 <img src="Web/ic_search.png" ng-click="elc.search_event()" style="cursor:pointer"/>
                 <a class="btn-floating white" data-toggle="modal" data-target="#calendar" href="">
-                    <img src="Web/ic_calendar.png"/></a>
+                    <img src="Web/ic_calendar.png" class="map"></a>
                     <d4></d4>
             </span>
 
         </div>
     </div>
-    <div class="col-md-12 test">
+    <div class="col-md-12 test SlickClass">
 
       <div  ng-if="!search">
         <div ng-if="final.length" >
-            <uib-tabset active="currentTab">
+            <uib-tabset active="currentTab" >
                 <slick class="slider" settings="slickConfig2">
                   <uib-tab ng-repeat="obj in final track by $index" href="#list" select=elc.getevents(obj.date) data-toggle="tab" ng-init="i=-1;">
                         <uib-tab-heading>
                             <div class="test1">{{obj.day}}<br/>
-                                {{obj.printDate}}</div>
+                                <b>{{obj.printDate}}</b></div>
                         </uib-tab-heading>
+                        <hr />
                         <br />
                         <p class="col-md-12" greyColor>
                             <span style="color:#A9A9A9">{{obj.month}}</span>
@@ -36,13 +37,13 @@
                                         <h4 ng-if="item[0].startTime">{{item[0].startTime}}<br /><span class="greyColor">{{item[0].period}}</span></h4>
                                     </div>
                                     <div ng-if="!load">
-
+                                      <a href="">
                                     <div class="col-md-11 detailh">
                                         <div class="container_card " style="padding-bottom:10px">
                                             <slick ng-if="item" settings="listConfig">
                                                 <div ng-repeat="obj in item" ng-click="elc.detailfun(obj.id)">
                                                     <h5 >{{obj.name}}</h5>
-                                                    <hr style="border-top: 3px solid #eee;"/>
+                                                    <hr style="border-top: 1px solid #C6C3C3;"/>
                                                     <p style="float:left;color:grey;" ng-if="obj.room"><img src="Web/ic_map.png" style="float:left;"/>
                                                         <span>at {{obj.room}}</span>
                                                     </p>
@@ -55,7 +56,7 @@
                                             </slick>
                                         </div>
 
-                                    </div><br/>
+                                    </div></a><br/>
 
                                 </div>
                             </div>
@@ -80,13 +81,14 @@
             <div ng-repeat="item in filteredArray | filter:search" ><br />
               {{item.Eventdate }} {{item.Eventmonth }} {{item.Eventyear }}<br /><br/>
                 <div class="col-md-1">
-                    <h5>{{item.startTime}}</h5>
+                    <h4 >{{item.startTime}}<br /><span class="greyColor">{{item.period}}</span></h4>
                 </div>
                 <div class="col-md-11">
                   <!-- {{filteredArray | filter:search}} -->
+                  <a href="">
                     <div class="container_card1">
                         <div ng-click="elc.detailfun(item.id)">
-                            <h5>{{item.name}}</h5>
+                            <h5 class="atag">{{item.name}}</h5>
                             <hr style="border-top: 3px solid #eee;"/>
                             <p style="float:left;color:grey;"><img src="Web/ic_map.png" style="float:left;"/>
                                 <span>at {{item.room}}</span>
@@ -96,7 +98,7 @@
                                     {{item.endTime}}</span>
                             </p>
                         </div>
-                    </div><br />
+                    </div></a><br />
                 </div><br /><br/>
             </div>
         </div>

@@ -23,19 +23,21 @@ export default class homeCtrl {
 		}
 		}
 			logout(){
-				var checkLogout=confirm("Do you want to logout?");
-				if(checkLogout){
-				console.log("Inside Logout");
-				IN.User.logout(()=> {
-					this.timeout(() =>{
-						this.rs.login=false;
-						this.rs.profileData="";
-						this.window.localStorage.bcflag=0;
-						this.window.localStorage.msflag=0;
-						this.window.localStorage.atflag=0;
-	          this.location.path('eventlist');
-					}, 0);
-       });
-			}
+				$('#logout').modal('show');
+				// var checkLogout=confirm("Do you want to logout?");
+		}
+
+		afterlogout(){
+			console.log("logout calllllllllllleeeeeeeeeeedddddddddddddd");
+			IN.User.logout(()=> {
+				this.timeout(() =>{
+					this.rs.login=false;
+					this.rs.profileData="";
+					this.window.localStorage.bcflag=0;
+					this.window.localStorage.msflag=0;
+					this.window.localStorage.atflag=0;
+					this.location.path('eventlist');
+				}, 0);
+		 });
 		}
 }

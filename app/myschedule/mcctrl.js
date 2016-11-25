@@ -43,8 +43,8 @@ this.detailfact.myschedule(this.ls.attendeeId).success((res)=>{
       this.newRes.day=dummyDay;
       this.newArray.push(this.newRes);
       this.newRes={};
-console.log(String(String(res[0].startsOn.date).split(' ')[0]));
-console.log(String(String(res[1].startsOn.date).split(' ')[0]));
+// console.log(String(String(res[0].startsOn.date).split(' ')[0]));
+// console.log(String(String(res[1].startsOn.date).split(' ')[0]));
       for(let p=1,j=0;p<res.length;p++){
         if(String(String(res[p-1].startsOn.date).split(' ')[0])==String(String(res[p].startsOn.date).split(' ')[0])){
           j++;
@@ -75,7 +75,8 @@ this.scope.currentTab=0;
         slidesToShow: 7,
         slidesToScroll: 1,
         method:{},
-        focusOnSelect:true
+        focusOnSelect:true,
+        arrows:true
       };
       }
       })

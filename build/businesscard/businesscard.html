@@ -1,13 +1,14 @@
 <div id="fb-root"></div>
 <div class="container remove-margin">
   <div class="top_container">
-    <d4><h2>Business Card</h2></d4>
-      <span style="margin-left:600px"><d4></d4></span>
+    <d4><h3>Business Card</h3></d4>
+      <span style="margin-left:700px"><d4></d4></span>
   </div>
     <div class="col-md-6 business-card">
+    <div class="businessUpper" style="min-height:150px;">
       <div class=col-md-4>
         <span style="float:left;padding-top:20px;">
-          <img id="pic" class="businesscardprofile" ng-src="{{person.pictureUrl}}" alt="profilePicture" height=100px width=100px>
+          <img id="pic" class="businesscardprofile big-image" ng-src="{{person.pictureUrl}}" alt="profilePicture" height=100px width=100px>
         </span>
       </div>
       <div class="col-md-8">
@@ -18,24 +19,28 @@
           <p id="email">{{person.emailAddress}}</p><br />
           <div ng-if="person.pnumber">
             <p id="phno">{{person.pnumber}}</p><br />
-          </div><br />
+          </div>
           <div ng-if="person.website">
             <p id="web">{{person.website}}</p>
           </div>
-        </div>
-        <br /><br />
+        </div><br />
+
       </div>
-      <div class="col-md-6" style="text-align:center;">
+    </div><br />
+    <!-- <hr style="height:2px;border:none;background-color:#EFEFEF;"> -->
+    <div class="businessLower" style="border-top:2px;height:20%">
+      <hr style="height:2px;border:none;background-color:#EFEFEF;">
+      <div class="col-md-6 nofocus" style="text-align:center;">
         <a href="#/editbusiness">
           <img src="Web/ic_edit_business_card.png"/>
         </a>
       </div>
-      <div class="col-md-6" style="text-align:center;">
+      <div class="col-md-6 nofocus" style="text-align:center;">
         <a data-toggle="modal" data-target="#share" href="">
           <img src="Web/ic_share_business_card.png" />
         </a>
       </div>
-
+    </div>
     </div>
     <div class="modal fade" id="share" role="dialog">
       <div class="modal-dialog modal-sm">
@@ -47,23 +52,21 @@
             <h4 class="modal-title" style="text-align:center;">Share via social media</h4>
           </div>
           <div class="modal-body" style="text-align:center;height:90px;">
-          <div class="col-md-4"><a href="" data-dismiss="modal" ng-click="bcc.shareLinkedin()">
-              <img src="Web/ic_linkedin.png"/>
-            </a></div>
-
-          <div class="col-md-4">
-            <a href="">
-              <div id="shareBtn">
-                <img src="Web/ic_facebook.png"/>
-            </div>
-          </a>
-
-          </div>
-
-        <div class="col-md-4"><a href="https://twitter.com/share" target="_blank" data-show-count="false">
-          <img src="Web/ic_twitter.png" />
-        </a></div>
-        <div ng-if="false"><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+            <div class="col-md-4">
+              <a href="https://www.linkedin.com/cws/share?url={{url}}" target="_blank" >
+                 <img src="Web/ic_linkedin.png"/>
+               </a>
+             </div>
+          <div class="col-md-4"><a href=""><div id="shareBtn">
+              <img src="Web/ic_facebook.png"/>
+          </div></a>
+        </div>
+        <div class="col-md-4">
+            <a href="https://twitter.com/share?text=My%20BusinessCard%0DName:+{{person.firstName}}+%20{{person.lastName}}+%0DDesignation:+{{person.positions.values[0].title}}+%0DEmail:+{{person.emailAddress}}%0D"  target="_blank" data-show-count="false">
+              <img src="Web/ic_twitter.png" />
+            </a>
+            <div ng-if="false"><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+        </div>
           </div>
         </div>
       </div>

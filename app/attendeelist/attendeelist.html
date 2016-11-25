@@ -2,7 +2,7 @@
   <div class="top_container">
     <div class="line">
       <d4><h3>Attendee List</h3></d4>
-      <span style="margin-left:400px"><input type="text" class="search-button" ng-model="attendee_search" name="search" placeholder="Search.."  ng-class="{'myClass': !showbox}">
+      <span style="margin-left:500px"><input type="text" class="search-button" ng-model="attendee_search" name="search" placeholder="Search.."  ng-class="{'myClass': !showbox}">
       <img src="Web/ic_search.png" ng-click="alc.search()" />
       <d4></d4>
       </span>
@@ -13,8 +13,8 @@
       <div class="col-md-12" ng-repeat="x in attendeelist | filter:attendee_search" style="margin-left:30px;">
           <span style="float:left;"><img class="img-circle" src="{{x.profilePicture}}" height="80px" width="80px"/></span>
         <div class="attendeeprofile">
-          <b>{{x.firstName}} {{x.lastName}}</b>
-          <h6 class="greyColor"style="font-size:16px;">{{x.designation}}</h6>
+          <b style="font-size:16px;">{{x.firstName}} {{x.lastName}}</b>
+          <h6 class="greyColor" style="font-size:14px;">{{x.designation}}</h6>
         </div>
         <hr />
       </div>

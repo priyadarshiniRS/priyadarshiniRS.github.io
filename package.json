@@ -4,7 +4,7 @@
   "description": "hi",
   "main": "index.js",
   "scripts": {
-    "start": "gulp build && gulp logs && gulp serve"
+    "test": "start"
   },
   "author": "karthik",
   "license": "ISC",
@@ -39,7 +39,6 @@
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-ng-annotate": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-strip-debug": "^1.1.0",
     "gulp-uglify": "^1.2.0",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.0.1",

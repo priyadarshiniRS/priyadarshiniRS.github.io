@@ -3,7 +3,6 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var vinylSourceStream = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
-var stripDebug = require('gulp-strip-debug');
 
 // Load all gulp plugins into the plugins object.
 var plugins = require('gulp-load-plugins')();
@@ -87,22 +86,12 @@ return sources.bundle()
 gulp.task('serve',['build','watch'], function() {
 plugins.connect.server({
 root: build,
-port: 9000,
+port: 8080,
 livereload: true,
 fallback: build + 'index.html'
 });
 });
 
-function handleError (err) {
-  console.log(err.toString())
-  process.exit(-1)
-}
-gulp.task('logs',function(){
-  return gulp.src(build+out.scripts.file)
-        .pipe(stripDebug())
-         .on('error', handleError)
-        .pipe(gulp.dest(build));
-})
 gulp.task('watch', function() {
 gulp.watch(src.libs, ['libs']);
 gulp.watch(src.html, ['html']);
